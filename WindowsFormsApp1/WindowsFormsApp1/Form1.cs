@@ -28,14 +28,14 @@ public Form1()
             try
             {
                 var command = Connection.conn.CreateCommand();
-                command.CommandText = "insert into categoria (`descr`) values ('" + textBox2.Text + "')";
+                command.CommandText = "UPDATE `entrada` SET `horariosaida`='"+now+"', WHERE placa  = '"+textBox1.Text+"'";
                 command.ExecuteNonQuery();
             }
             catch (MySqlException ex) {
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        
         //string[] itens;
 
         //Traduz de descrição para id;
@@ -73,8 +73,7 @@ public Form1()
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int a = tradcat(comboBox2.SelectedItem.ToString());
-            MessageBox.Show(a.ToString());
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -87,12 +86,13 @@ public Form1()
                 command.ExecuteNonQuery();
                 MessageBox.Show("Sucesso");
                 Connection.conn.Close();
+                combo();
             }
             else { MessageBox.Show("Campo descrição em branco"); Connection.conn.Close(); }
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
+        { 
             Connection.conectar();
             if (!textBox3.Text.Equals(""))
             {
@@ -101,6 +101,7 @@ public Form1()
                 command.ExecuteNonQuery();
                 MessageBox.Show("Sucesso");
                 Connection.conn.Close();
+                combo();
             }
             else
             {
@@ -108,7 +109,61 @@ public Form1()
                 Connection.conn.Close();
             }
         }
+        bool a = true;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (a) {
+                panelCat.Visible = a;
+                a = false;
+            }
+            else {
+                panelCat.Visible = a;
+                a = true;
+            }
+        }
 
-        
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            Connection.conectar();
+            DateTime now = DateTime.Now;
+            try
+            {
+                if (((!textBox1.Text.Equals("")) || ((!textBox2.Text.Equals("")) || ((!textBox4.Text.Equals(""))){
+                    var command = Connection.conn.CreateCommand();
+                    command.CommandText = "INSERT INTO `entrada`(`placa`, `modelo`, `nome`, `horarioentrada`, `horariosaida`, `IDCategoria`) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox4.Text + "','" + now + "','" + null + "','" + tradcat(comboBox2.SelectedItem.ToString()) + "')";
+                    // MessageBox.Show(command.CommandText);
+                    MessageBox.Show("Sucesso");
+                    command.ExecuteNonQuery();
+                    Connection.conn.Close();
+                }
+                else {
+                    MessageBox.Show("Campo descrição em branco");
+                    Connection.conn.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void RmBtn_Click(object sender, EventArgs e)
+        {
+            Connection.conectar();
+            if (!textBox1.Text.Equals(""))
+            {
+                var command = Connection.conn.CreateCommand();
+                command.CommandText = "delete from entrada where placa = '" + textBox1.Text + "'";
+                command.ExecuteNonQuery();
+                MessageBox.Show("Sucesso");
+                Connection.conn.Close();
+                combo();
+            }
+            else
+            {
+                MessageBox.Show("Campo descrição em branco");
+                Connection.conn.Close();
+            }
+        }
     }
 }

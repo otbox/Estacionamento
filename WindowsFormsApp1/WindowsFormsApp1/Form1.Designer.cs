@@ -43,17 +43,19 @@ namespace WindowsFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelCat = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SeaBtn.SuspendLayout();
             this.RmBtn.SuspendLayout();
@@ -109,6 +111,7 @@ namespace WindowsFormsApp1
             this.RmBtn.Name = "RmBtn";
             this.RmBtn.Size = new System.Drawing.Size(166, 32);
             this.RmBtn.TabIndex = 1;
+            this.RmBtn.Click += new System.EventHandler(this.RmBtn_Click);
             // 
             // label3
             // 
@@ -133,6 +136,7 @@ namespace WindowsFormsApp1
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(166, 32);
             this.AddBtn.TabIndex = 0;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // label2
             // 
@@ -214,7 +218,8 @@ namespace WindowsFormsApp1
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panelCat);
+            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.comboBox2);
@@ -226,6 +231,16 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(611, 349);
             this.panel3.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(424, 108);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 37);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Alterar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -287,47 +302,31 @@ namespace WindowsFormsApp1
             this.label5.TabIndex = 1;
             this.label5.Text = "PLACA:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(424, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 37);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Alterar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // panelCat
             // 
             this.panelCat.Controls.Add(this.label9);
             this.panelCat.Controls.Add(this.button3);
             this.panelCat.Controls.Add(this.button2);
             this.panelCat.Controls.Add(this.textBox3);
-            this.panelCat.Location = new System.Drawing.Point(0, 154);
+            this.panelCat.Location = new System.Drawing.Point(175, 310);
             this.panelCat.Name = "panelCat";
-            this.panelCat.Size = new System.Drawing.Size(611, 195);
+            this.panelCat.Size = new System.Drawing.Size(611, 125);
             this.panelCat.TabIndex = 8;
+            this.panelCat.Visible = false;
             // 
-            // textBox3
+            // label9
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.textBox3.Location = new System.Drawing.Point(36, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(230, 35);
-            this.textBox3.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(283, 103);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 37);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Adicionar ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(31, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(255, 29);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Modificar Categorias";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(411, 103);
+            this.button3.Location = new System.Drawing.Point(403, 59);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(113, 37);
             this.button3.TabIndex = 10;
@@ -335,15 +334,45 @@ namespace WindowsFormsApp1
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label9
+            // button2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(31, 58);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(255, 29);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Modificar Categorias";
+            this.button2.Location = new System.Drawing.Point(284, 61);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 37);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Adicionar ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.textBox3.Location = new System.Drawing.Point(36, 61);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(230, 35);
+            this.textBox3.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(54, 158);
+            this.label10.Margin = new System.Windows.Forms.Padding(3);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 23);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "NOME:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.textBox4.Location = new System.Drawing.Point(136, 158);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(282, 35);
+            this.textBox4.TabIndex = 10;
             // 
             // Form1
             // 
@@ -351,6 +380,7 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(799, 450);
+            this.Controls.Add(this.panelCat);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.FinBtn);
             this.Controls.Add(this.panel2);
@@ -404,6 +434,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 
